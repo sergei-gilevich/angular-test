@@ -1,0 +1,9 @@
+<div>
+  <label>
+    name:
+    <input [(ngModel)]="guitarist.name" placeholder="name">
+  </label>
+  <ul>
+    <li *ngFor="let group of guitarist.groups">{{group}}</li>
+  </ul>
+</div>
