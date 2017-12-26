@@ -5,12 +5,14 @@ import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { GuitaristsComponent } from './guitarists/guitarists.component';
+import { GuitaristDetailsComponent } from './guitarist-details/guitarist-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GuitaristsComponent
+    GuitaristsComponent,
+    GuitaristDetailsComponent
   ],
   imports: [
     BrowserModule,

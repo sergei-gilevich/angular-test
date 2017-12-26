@@ -1,0 +1,8 @@
+.listContainer {
+  text-align: center;
+  font-size: 30px;
+}
+
+.listContainer ul {
+  list-style-type: none;
+}

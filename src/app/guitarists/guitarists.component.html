@@ -1,19 +1,9 @@
-
-<div *ngIf="selectedGuitarist">
-  <h2>{{ selectedGuitarist.name | uppercase }}</h2>
-  <div><span>id: </span>{{selectedGuitarist.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedGuitarist.name" placeholder="name">
-    </label>
-  </div>
-</div>
-
-
-<div>
+<div class="listContainer">
   <ul>
     <li *ngFor="let guitarist of guitarists" (click)="onSelect(guitarist)">
       <span>{{guitarist.id}}.</span> {{guitarist.name}}
     </li>
   </ul>
 </div>
+
+<app-guitarist-details [guitarist]="selectedGuitarist"></app-guitarist-details>
