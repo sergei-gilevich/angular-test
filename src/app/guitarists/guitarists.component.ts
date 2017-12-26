@@ -4,6 +4,7 @@ import {GuitaristService} from '../guitarist.service';
 import { Injectable } from '@angular/core';
 import {GUITARISTS} from '../mock-data';
 import {Guitarist} from '../guitarist';
+import {log} from 'util';
 @Injectable()
 export class GuitaristService {
 
@@ -35,7 +36,10 @@ export class GuitaristsComponent implements OnInit {
   }
 
   onSelect(guitarist: Guitarist) {
-    this.selectedGuitarist = guitarist;
+    if (this.selectedGuitarist && this.selectedGuitarist.id === guitarist.id) {
+      return this.selectedGuitarist = null;
+    }
+    return this.selectedGuitarist = guitarist;
   }
 
   handleDeleteClick(index: number): void {
