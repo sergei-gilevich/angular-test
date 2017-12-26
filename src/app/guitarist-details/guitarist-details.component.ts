@@ -8,6 +8,7 @@ import {Guitarist} from '../guitarist';
 })
 export class GuitaristDetailsComponent implements OnInit {
   @Input() guitarist: Guitarist;
+  @Input() inputFun: Function;
   constructor() { }
 
   ngOnInit() {

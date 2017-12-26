@@ -8,8 +8,8 @@
   </div>
   <p>Groups</p>
   <ol>
-    <li *ngFor="let group of guitarist.groups">
-      {{group}}
+    <li *ngFor="let group of guitarist.groups; let i = index" >
+      {{group}} <span (click)="inputFun(i)">X</span>
     </li>
   </ol>
 </div>

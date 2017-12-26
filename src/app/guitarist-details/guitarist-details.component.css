@@ -5,3 +5,7 @@
 .detailsContainer li {
   color: red;
 }
+
+.detailsContainer ol li span {
+  color: black;
+}
