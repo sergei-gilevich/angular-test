@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { GuitaristsComponent } from './guitarists/guitarists.component';
 import { GuitaristDetailsComponent } from './guitarist-details/guitarist-details.component';
+import {GuitaristService} from './guitarist.service';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { GuitaristDetailsComponent } from './guitarist-details/guitarist-details
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [GuitaristService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

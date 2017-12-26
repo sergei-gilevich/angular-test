@@ -1,8 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-
+import {Guitarist} from '../guitarist';
+import {GuitaristService} from '../guitarist.service';
+import { Injectable } from '@angular/core';
 import {GUITARISTS} from '../mock-data';
 import {Guitarist} from '../guitarist';
-import {log} from 'util';
+@Injectable()
+export class GuitaristService {
+
+  constructor() { }
+
+  getHeroes(): Guitarist[] {
+    return GUITARISTS;
+  }
+}
 
 @Component({
   selector: 'app-guitarists',
@@ -10,16 +20,19 @@ import {log} from 'util';
   styleUrls: ['./guitarists.component.css']
 })
 export class GuitaristsComponent implements OnInit {
-  constructor() {
-
-  }
+  constructor(private guitaristsService: GuitaristService) { }
 
   ngOnInit () {
+    this.getGuitarists();
   }
 
   selectedGuitarist: Guitarist;
 
-  guitarists = GUITARISTS;
+  guitarists: Guitarist[];
+
+  getGuitarists(): void {
+    this.guitarists = this.guitaristsService.getGuitarists();
+  }
 
   onSelect(guitarist: Guitarist) {
     this.selectedGuitarist = guitarist;
