@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import {GUITARISTS} from '../mock-data';
 import {Guitarist} from '../guitarist';
 
 @Component({
@@ -14,9 +15,12 @@ export class GuitaristsComponent implements OnInit {
   ngOnInit () {
   }
 
-  guitarist: Guitarist = {
-    id: 1,
-    name: 'Angus Yang',
-    groups: ['AC/DC', 'test']
-  };
+  selectedGuitarist: Guitarist;
+
+  guitarists = GUITARISTS;
+
+  onSelect(guitarist: Guitarist) {
+    this.selectedGuitarist = guitarist;
+  }
+
 }
