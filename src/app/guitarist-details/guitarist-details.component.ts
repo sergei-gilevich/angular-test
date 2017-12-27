@@ -31,8 +31,6 @@ export class GuitaristDetailsComponent implements OnInit {
   }
 
   goBack(): void {
-    console.log('location', this.location);
     this.location.back();
   }
-
 }
