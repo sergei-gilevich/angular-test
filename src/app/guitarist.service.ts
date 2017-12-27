@@ -63,6 +63,17 @@ export class GuitaristService {
       );
   }
 
+  serachByName(value: string): Observable<Guitarist[]> {
+    if (!value.trim()) {
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`api/guitarists/?name=${value}`)
+      .pipe(
+        tap(() => this.log(`founded guitarists matching ${value}`)),
+        catchError(this.handleError<Hero[]>('searchGuitarists []'))
+      );
+  }
+
   private log(message: string) {
     this.messageService.add('Service ' + message);
   }

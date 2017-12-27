@@ -14,6 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { GuitaristSearchComponent } from './guitarist-search/guitarist-search.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { InMemoryDataService } from './in-memory-data.service';
     GuitaristsComponent,
     GuitaristDetailsComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    GuitaristSearchComponent
   ],
   imports: [
     BrowserModule,
