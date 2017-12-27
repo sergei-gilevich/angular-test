@@ -7,19 +7,22 @@ import { AppComponent } from './app.component';
 import { GuitaristsComponent } from './guitarists/guitarists.component';
 import { GuitaristDetailsComponent } from './guitarist-details/guitarist-details.component';
 import {GuitaristService} from './guitarist.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     GuitaristsComponent,
-    GuitaristDetailsComponent
+    GuitaristDetailsComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [GuitaristService],
+  providers: [GuitaristService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

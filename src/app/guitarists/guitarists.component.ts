@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Guitarist} from '../guitarist';
-import {GuitaristService} from '../guitarist.service';
+import { Guitarist } from '../guitarist';
+import { GuitaristService } from '../guitarist.service';
 import { Injectable } from '@angular/core';
-import {GUITARISTS} from '../mock-data';
-import {Guitarist} from '../guitarist';
+import { GUITARISTS } from '../mock-data';
+import { Guitarist } from '../guitarist';
+import { MessageService } from '../message.service';
 import {log} from 'util';
 @Injectable()
 export class GuitaristService {
@@ -21,7 +22,7 @@ export class GuitaristService {
   styleUrls: ['./guitarists.component.css']
 })
 export class GuitaristsComponent implements OnInit {
-  constructor(private guitaristsService: GuitaristService) { }
+  constructor(private guitaristsService: GuitaristService, private messageService: MessageService) { }
 
   ngOnInit () {
     this.getGuitarists();
@@ -32,7 +33,8 @@ export class GuitaristsComponent implements OnInit {
   guitarists: Guitarist[];
 
   getGuitarists(): void {
-    this.guitarists = this.guitaristsService.getGuitarists();
+    this.guitaristsService.getGuitarists()
+      .subscribe(guitarists => this.guitarists = guitarists);
   }
 
   onSelect(guitarist: Guitarist) {
@@ -44,6 +46,7 @@ export class GuitaristsComponent implements OnInit {
 
   handleDeleteClick(index: number): void {
     this.guitarist.groups = this.guitarist.groups.filter((item, idx) => idx !== index);
+    this.messageService.add('Remove group');
   }
 
   handleRemove(index: number): void {
@@ -55,6 +58,8 @@ export class GuitaristsComponent implements OnInit {
             id: idx + 1
           };
       });
+    this.selectedGuitarist = null;
+    this.messageService.add('Remove guitarist');
   }
 
 }
