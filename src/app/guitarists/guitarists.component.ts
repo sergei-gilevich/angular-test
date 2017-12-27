@@ -51,4 +51,18 @@ export class GuitaristsComponent implements OnInit {
     this.messageService.add('Remove guitarist');
   }
 
+  add(name: string): void {
+    const name_ = name.trim();
+    if (!name_) {
+      return;
+    }
+    this.guitaristsService.addGuitarist({name} as Guitarist)
+      .subscribe(guitarist => this.guitarists.push(guitarist));
+  }
+
+  delete(guitarist: Guitarist): void {
+    this.guitarists = this.guitarists.filter(item => item.id !== guitarist.id);
+    this.guitaristsService.deleteGuitarist(guitarist).subscribe();
+  }
+
 }

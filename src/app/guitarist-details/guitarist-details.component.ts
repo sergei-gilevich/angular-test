@@ -33,4 +33,9 @@ export class GuitaristDetailsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  save(): void {
+    this.guitaristService.updateGuitarist(this.guitarist)
+      .subscribe(() => this.goBack());
+  }
 }

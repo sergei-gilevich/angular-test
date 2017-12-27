@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   getGuitarists() {
     this.guitaristService.getGuitarists().
-      subscribe(guitarists => this.guitarists = guitarists.slice(1, 3));
+      subscribe(guitarists => this.guitarists = guitarists.slice(1, 5));
   }
 
 }

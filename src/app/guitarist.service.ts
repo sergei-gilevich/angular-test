@@ -7,6 +7,10 @@ import { MessageService} from './message.service';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class GuitaristService {
 
@@ -32,8 +36,35 @@ export class GuitaristService {
     );
   }
 
+  updateGuitarist(guitarist: Guitarist): Observable<any> {
+    return this.http.put(this.guitaristsUrl, guitarist, httpOptions)
+      .pipe(
+        tap(() => this.log(`update guitarist id=${guitarist.id}`)),
+        catchError(this.handleError<any>('Update'))
+      );
+  }
+
+  addGuitarist(guitarist: Guitarist): Observable<Guitarist> {
+    return this.http.post<Guitarist>(this.guitaristsUrl, guitarist, httpOptions)
+      .pipe(
+        tap((guitarist_: Guitarist) => this.log(`added ${guitarist_.name}`)),
+        catchError(this.handleError<Guitarist>('addGuitarist'))
+      );
+  }
+
+  deleteGuitarist(guitarist: Guitarist | number): Observable<Guitarist> {
+    const id = isNaN(guitarist) ? guitarist.id : guitarist;
+    const url = `${this.guitaristsUrl}/${id}`;
+    return this.http.delete(url, httpOptions)
+      .pipe(
+        tap(() => this.log(`Delete guitarist id=${id}`)),
+        catchError(this.handleError<Guitarist>('deleteGuitarist'))
+
+      );
+  }
+
   private log(message: string) {
-    this.messageService.add('Servie ' + message);
+    this.messageService.add('Service ' + message);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

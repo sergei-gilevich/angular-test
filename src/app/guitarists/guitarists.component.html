@@ -2,12 +2,26 @@
   <ul>
     <li *ngFor="let guitarist of guitarists; let idx = index" (click)="onSelect(guitarist)">
       <a routerLink="/details/{{guitarist.id}}">
-        <span>{{guitarist.id}}.</span> {{guitarist.name}} <span (click)="handleRemove(idx)"> - X</span>
+        <span>{{guitarist.id}}.</span> {{guitarist.name}}
       </a>
+      <button class="delete" title="delete guitarist" (click)="delete(guitarist)">
+        x
+      </button>
     </li>
   </ul>
 </div>
 
+<div>
+  <label>Hero name:
+    <input #guitaristName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(guitaristName.value); guitaristName.value=''">
+    add
+  </button>
+</div>
+
 <app-guitarist-details
   [guitarist]="selectedGuitarist"
-[inputFun]="handleDeleteClick"></app-guitarist-details>
+>
+</app-guitarist-details>

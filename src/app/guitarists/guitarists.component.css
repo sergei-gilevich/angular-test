@@ -6,3 +6,7 @@
 .listContainer ul {
   list-style-type: none;
 }
+
+.listContainer a {
+  text-decoration: none;
+}
