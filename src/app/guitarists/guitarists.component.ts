@@ -1,20 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Guitarist } from '../guitarist';
 import { GuitaristService } from '../guitarist.service';
-import { Injectable } from '@angular/core';
-import { GUITARISTS } from '../mock-data';
-import { Guitarist } from '../guitarist';
 import { MessageService } from '../message.service';
-import {log} from 'util';
-@Injectable()
-export class GuitaristService {
 
-  constructor() { }
-
-  getHeroes(): Guitarist[] {
-    return GUITARISTS;
-  }
-}
 
 @Component({
   selector: 'app-guitarists',
@@ -45,6 +33,7 @@ export class GuitaristsComponent implements OnInit {
   }
 
   handleDeleteClick(index: number): void {
+    console.log(this);
     this.guitarist.groups = this.guitarist.groups.filter((item, idx) => idx !== index);
     this.messageService.add('Remove group');
   }

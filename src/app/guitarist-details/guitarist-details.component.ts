@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Guitarist} from '../guitarist';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-guitarist-details',
@@ -9,7 +10,7 @@ import {Guitarist} from '../guitarist';
 export class GuitaristDetailsComponent implements OnInit {
   @Input() guitarist: Guitarist;
   @Input() inputFun: Function;
-  constructor() { }
+  constructor(private  messageService: MessageService) { }
 
   ngOnInit() {
   }
