@@ -1,7 +1,9 @@
 <div class="listContainer">
   <ul>
     <li *ngFor="let guitarist of guitarists; let idx = index" (click)="onSelect(guitarist)">
-      <span>{{guitarist.id}}.</span> {{guitarist.name}} <span (click)="handleRemove(idx)"> - X</span>
+      <a routerLink="/details/{{guitarist.id}}">
+        <span>{{guitarist.id}}.</span> {{guitarist.name}} <span (click)="handleRemove(idx)"> - X</span>
+      </a>
     </li>
   </ul>
 </div>

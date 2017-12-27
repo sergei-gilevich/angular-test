@@ -9,6 +9,8 @@ import { GuitaristDetailsComponent } from './guitarist-details/guitarist-details
 import {GuitaristService} from './guitarist.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -16,11 +18,13 @@ import { MessageService } from './message.service';
     AppComponent,
     GuitaristsComponent,
     GuitaristDetailsComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [GuitaristService, MessageService],
   bootstrap: [AppComponent]

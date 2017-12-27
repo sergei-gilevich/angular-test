@@ -8,10 +8,15 @@ import { MessageService} from './message.service';
 @Injectable()
 export class GuitaristService {
 
-  constructor(private messageServie: MessageService) { }
+  constructor(private messageService: MessageService) { }
 
   getGuitarists(): Observable<Guitarist[]> {
-    this.messageServie.add('Fetched');
-    return of (GUITARISTS)
+    this.messageService.add('Fetched');
+    return of(GUITARISTS);
+  }
+
+  getGuitarist(id: number): Observable<Guitarist> {
+    this.messageService.add(`Fitched by id ${id}`);
+    return of(GUITARISTS.find(item => item.id === id));
   }
 }
