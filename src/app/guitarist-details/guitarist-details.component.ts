@@ -12,7 +12,6 @@ import { GuitaristService} from '../guitarist.service';
 })
 export class GuitaristDetailsComponent implements OnInit {
   @Input() guitarist: Guitarist;
-  @Input() inputFun: Function;
   constructor(
     private messageService: MessageService,
     private route: ActivatedRoute,
@@ -30,8 +29,24 @@ export class GuitaristDetailsComponent implements OnInit {
       .subscribe(guitarist => this.guitarist = guitarist);
   }
 
-  goBack(): void {
+    goBack(): void {
     this.location.back();
+  }
+
+  removeGroup(idx: number): void {
+    console.log(idx, this.guitarist);
+    this.guitarist.groups = this.guitarist.groups.filter((item, index) =>
+      index !== idx
+    );
+    this.guitaristService.updateUserGroups(this.guitarist).subscribe();
+  }
+
+  addGroup(value: string) {
+    if (value && value.trim()) {
+      this.guitarist.groups = this.guitarist.groups && this.guitarist.groups.length ?
+        [...this.guitarist.groups, value] : [value];
+      this.guitaristService.updateUserGroups(this.guitarist).subscribe();
+    }
   }
 
   save(): void {

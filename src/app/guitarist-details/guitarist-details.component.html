@@ -9,9 +9,18 @@
   <p>Groups</p>
   <ol>
     <li *ngFor="let group of guitarist.groups; let i = index" >
-      {{group}} <span (click)="inputFun(i)">X</span>
+      {{group}} <span (click)="removeGroup(i)">X</span>
     </li>
   </ol>
+  <div>
+    <label>Group name:
+      <input #groupName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="addGroup(groupName.value); groupName.value=''">
+      Add
+    </button>
+  </div>
   <button (click)="save()">Save</button>
   <button (click)="goBack()">Back</button>
 </div>

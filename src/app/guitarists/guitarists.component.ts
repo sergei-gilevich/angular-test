@@ -32,25 +32,6 @@ export class GuitaristsComponent implements OnInit {
     return this.selectedGuitarist = guitarist;
   }
 
-  handleDeleteClick(index: number): void {
-    console.log(this);
-    this.guitarist.groups = this.guitarist.groups.filter((item, idx) => idx !== index);
-    this.messageService.add('Remove group');
-  }
-
-  handleRemove(index: number): void {
-    this.guitarists = this.guitarists.filter(
-      (item: Guitarist, idx: number) => idx !== index).map(
-        (item: Guitarist, idx: number): Guitarist => {
-          return {
-            ...item,
-            id: idx + 1
-          };
-      });
-    this.selectedGuitarist = null;
-    this.messageService.add('Remove guitarist');
-  }
-
   add(name: string): void {
     const name_ = name.trim();
     if (!name_) {

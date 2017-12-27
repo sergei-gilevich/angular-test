@@ -74,6 +74,13 @@ export class GuitaristService {
       );
   }
 
+  updateUserGroups(guitarist: Guitarist): Observable<Guitarist> {
+    return this.http.put<Guitarist>(this.guitaristsUrl, guitarist, httpOptions)
+      .pipe(
+        tap(() => this.log(`Update groups for ${guitarist.name}`))
+      );
+  }
+
   private log(message: string) {
     this.messageService.add('Service ' + message);
   }
