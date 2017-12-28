@@ -55,7 +55,7 @@ export class GuitaristService {
   deleteGuitarist(guitarist: Guitarist): Observable<Guitarist> {
     const id = guitarist.id;
     const url = `${this.guitaristsUrl}/${id}`;
-    return this.http.delete(url, httpOptions)
+    return this.http.delete<Guitarist>(url, httpOptions)
       .pipe(
         tap(() => this.log(`Delete guitarist id=${id}`)),
         catchError(this.handleError<Guitarist>('deleteGuitarist'))
