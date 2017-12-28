@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { GUITARISTS } from './mock-data';
 import { Guitarist } from './guitarist';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { MessageService} from './message.service';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,6 +18,7 @@ export class GuitaristService {
     private http: HttpClient,
   ) { }
 
+  private guitaristsUrl = 'api/guitarists';
   getGuitarists(): Observable<Guitarist[]> {
     this.messageService.add('Fetched');
     return this.http.get<Guitarist[]>(this.guitaristsUrl).
@@ -52,8 +52,8 @@ export class GuitaristService {
       );
   }
 
-  deleteGuitarist(guitarist: Guitarist | number): Observable<Guitarist> {
-    const id = isNaN(guitarist) ? guitarist.id : guitarist;
+  deleteGuitarist(guitarist: Guitarist): Observable<Guitarist> {
+    const id = guitarist.id;
     const url = `${this.guitaristsUrl}/${id}`;
     return this.http.delete(url, httpOptions)
       .pipe(
@@ -63,14 +63,14 @@ export class GuitaristService {
       );
   }
 
-  serachByName(value: string): Observable<Guitarist[]> {
+  searchByName(value: string): Observable<Guitarist[]> {
     if (!value.trim()) {
       return of([]);
     }
-    return this.http.get<Hero[]>(`api/guitarists/?name=${value}`)
+    return this.http.get<Guitarist[]>(`api/guitarists/?name=${value}`)
       .pipe(
         tap(() => this.log(`founded guitarists matching ${value}`)),
-        catchError(this.handleError<Hero[]>('searchGuitarists []'))
+        catchError(this.handleError<Guitarist[]>('searchGuitarists []'))
       );
   }
 
@@ -98,7 +98,4 @@ export class GuitaristService {
       return of(result as T);
     };
   }
-
-  private guitaristsUrl = 'api/guitarists';
-
 }

@@ -34,7 +34,6 @@ export class GuitaristDetailsComponent implements OnInit {
   }
 
   removeGroup(idx: number): void {
-    console.log(idx, this.guitarist);
     this.guitarist.groups = this.guitarist.groups.filter((item, index) =>
       index !== idx
     );

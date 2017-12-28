@@ -29,7 +29,7 @@ export class GuitaristSearchComponent implements OnInit {
     this.guitarists$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.guitaristService.serachByName(term))
+      switchMap((term: string) => this.guitaristService.searchByName(term))
     );
   }
 }

@@ -1,5 +1,12 @@
 .detailsContainer {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid #000;
+  width: 33%;
+  margin-left: 33%;
+  margin-top: 30px;
 }
 
 .detailsContainer li {
