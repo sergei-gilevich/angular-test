@@ -50,6 +50,7 @@ export class GuitaristDetailsComponent implements OnInit {
 
   save(): void {
     this.guitaristService.updateGuitarist(this.guitarist)
-      .subscribe(() => this.goBack());
+      .subscribe(() => this.goBack(),
+        error => console.log('', error));
   }
 }
