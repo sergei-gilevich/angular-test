@@ -5,7 +5,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const guitarists = [
       {
         id: 1,
-        name: 'Ritchie Blackmore ',
+        name: 'Ritchie Blackmore',
         groups: ['Rainbow', 'Deep Purple', 'Heinz']
       }, {
         id: 2,
